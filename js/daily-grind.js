@@ -30,11 +30,37 @@ let myDate = new Date();
 let myDay = myDate.getDay();
 let coffee = "";
 let today = "";
+
+//use location object to access querystring (address bar)
+const queryString = window.location.search;
+    
+//output to console    
+console.log(queryString);
+    
+//separate query string parameters
+const urlParams = new URLSearchParams(queryString);
+
+
+//myDay = 3;//test only remove this
+
 switch(myDay){
 
      case 0:
          today = "Sunday";
      break;
+
+     case 1:
+        today = "Wednesday";
+
+        coffee = {
+            name: "Cold brew",
+            pic: "images/cold-brew.jpg",
+            alt: "A pic of a cold brew ",
+            color: "brown",
+            day: "Monday",
+            desc: `For when I need a quick pick me up!`
+        };
+
 
      case 2:
          today = "Tuesday";
@@ -59,10 +85,12 @@ switch(myDay){
 
 }
 
-alert(today);
+//alert(today);
 console.log(coffee);
 
 document.getElementById("coffee-cup").innerHTML = coffeeTemplate(coffee);
+
+document.querySelector("html").style.backgroundColor = coffee.color;
 
 
 function coffeeTemplate(coffee){
